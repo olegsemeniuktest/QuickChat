@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="mainLayout" template="/resources/pages/layouts/mainLayout.jsp">
+        <put-attribute name="common_styles" value="/resources/pages/common/commonStyles.jsp"/>
+        <put-attribute name="common_scripts" value="/resources/pages/common/commonScripts.jsp"/>
+        <put-attribute name="header" value=""/>  <!--value="/resources/pages/chat/header.jsp"-->
+        <put-attribute name="body" value=""/>
+        <put-attribute name="left_part" value=""/>
+        <put-attribute name="right_part" value=""/>
+    </definition>
+
+    <definition name="welcome" extends="mainLayout">
+        <put-attribute name="body" value="/resources/pages/chat/welcome.jsp"/>
+    </definition>
+
+    <definition name="startPage" extends="mainLayout">
+        <put-attribute name="body" value=""/>
+    </definition>
+
+  </tiles-definitions>

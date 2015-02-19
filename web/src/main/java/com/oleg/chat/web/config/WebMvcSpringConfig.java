@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 
 /**
  * Created by Oleg Semeniuk on 18.02.2015.
@@ -18,16 +20,33 @@ public class WebMvcSpringConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/pages/**").addResourceLocations("/pages/");
+//        registry.addResourceHandler("/pages/**").addResourceLocations("/resources/pages/");
+        registry.addResourceHandler("/styles/**").addResourceLocations("/resources/styles/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
+        registry.addResourceHandler("/scripts/**").addResourceLocations("/resources/scripts/");
+        registry.addResourceHandler("/flash/**").addResourceLocations("/resources/flash/");
+    }
+
+//    @Bean
+//    public InternalResourceViewResolver internalResourceViewResolver() {
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setPrefix("/resources/pages/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
+//    }
+
+    @Bean
+    public UrlBasedViewResolver viewResolver() {
+        UrlBasedViewResolver urlBasedViewResolver = new UrlBasedViewResolver();
+        urlBasedViewResolver.setViewClass(TilesView.class);
+        return urlBasedViewResolver;
     }
 
     @Bean
-    public InternalResourceViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/resources/pages/");
-        resolver.setSuffix(".jsp");
-
-        return resolver;
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions("/WEB-INF/tiles/tiles.xml");
+        return tilesConfigurer;
     }
 
 }
