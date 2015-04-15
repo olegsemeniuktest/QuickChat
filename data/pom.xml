@@ -12,8 +12,23 @@
     <artifactId>data</artifactId>
     <version>0.0</version>
 
+    <properties>
+        <spring.mongodb.version>1.6.2.RELEASE</spring.mongodb.version>
+        <mongodb.driver.version>2.13.0</mongodb.driver.version>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>${spring.mongodb.version}</version>
+        </dependency>
 
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongodb.driver.version}</version>
+        </dependency>
     </dependencies>
 </project>
