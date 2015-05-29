@@ -1,0 +1,14 @@
+.btn-primary {
+    font-size: 16pt;
+    background: #f04e23;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #f8672e;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #c34c27;
+    box-shadow: none;
+}

@@ -13,4 +13,5 @@ public interface IUserService {
 
     void remove(long id);
 
+    User getByNickName(String nickname);
 }

@@ -11,19 +11,19 @@ import java.security.Principal;
  * Created by Oleg Semeniuk on 19.02.2015.
  */
 @Controller
-public class WelcomeController {
+public class SignInController {
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String welcome(ModelMap model, Principal principal) {
+    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
+    public String signIn(ModelMap model, Principal principal) {
         if (principal != null) {
-            return "startPage";
+            return "redirect:/chats/public";
         } else {
-            return "welcome";
+            return "signIn";
         }
     }
 
     @RequestMapping("")
-    public String home() {
-        return "redirect:/welcome";
+    public String root() {
+        return "redirect:/signIn";
     }
 }

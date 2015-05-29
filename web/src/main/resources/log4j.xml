@@ -46,5 +46,8 @@
         <appender-ref ref="CA"/>
     </root>
 
+    <!--<logger name="org.apache.catalina" additivity="false">-->
+        <!--<appender-ref ref="CA"/>-->
+    <!--</logger>-->
 
 </log4j:configuration>

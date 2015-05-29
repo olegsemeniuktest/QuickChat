@@ -3,6 +3,7 @@ package com.oleg.chat.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.oleg.chat.web")
+@ComponentScan(value = "com.oleg.chat.web", excludeFilters = {@ComponentScan.Filter(pattern = "com.oleg.chat.web.security.*",type = FilterType.REGEX)})
 public class WebMvcSpringConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -24,7 +25,6 @@ public class WebMvcSpringConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/styles/**").addResourceLocations("/resources/styles/");
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
         registry.addResourceHandler("/scripts/**").addResourceLocations("/resources/scripts/");
-        registry.addResourceHandler("/flash/**").addResourceLocations("/resources/flash/");
     }
 
 //    @Bean

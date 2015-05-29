@@ -15,7 +15,6 @@
 
     <properties>
         <jetty.version>9.0.7.v20131107</jetty.version>
-        <spring.security.version>3.2.5.RELEASE</spring.security.version>
         <jackson.version>2.3.0</jackson.version>
         <tiles.version>3.0.5</tiles.version>
     </properties>

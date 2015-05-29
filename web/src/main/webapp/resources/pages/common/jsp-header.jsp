@@ -6,8 +6,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
-<%@ page import="java.util.Properties" %>
-<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="currentLanguage" value="${pageContext.response.locale.language}"/>
+<%--<c:set var="contextPath">--%>
+    <%--<c:url value="/"/>--%>
+<%--</c:set>--%>

@@ -10,25 +10,13 @@
         <tiles:insertAttribute name="common_styles"/>
     </head>
     <body>
-        <tiles:insertAttribute name="common_scripts"/>
+    <tiles:insertAttribute name="common_scripts"/>
 
-        <table class="mainTable" border="1px" width="1000" align="center">
-            <tr style="height: 100px">
-                <td colspan="3">
-                    <tiles:insertAttribute name="header"/>
-                </td>
-            </tr>
-            <tr>
-                <td style="vertical-align: top; width:25%; padding: 10px">
-                        <tiles:insertAttribute name="left_part"/>
-                </td>
-                <td style="vertical-align: top; width:55%; padding: 10px">
-                    <tiles:insertAttribute name="body"/>
-                </td>
-                <td style="vertical-align: top; width:20%; padding: 10px">
-                    <tiles:insertAttribute name="right_part"/>
-                </td>
-            </tr>
-        </table>
+
+    <tiles:insertAttribute name="header"/>
+
+
+    <tiles:insertAttribute name="body"/>
+
     </body>
 </html>

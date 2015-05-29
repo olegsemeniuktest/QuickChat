@@ -7,18 +7,20 @@
     <definition name="mainLayout" template="/resources/pages/layouts/mainLayout.jsp">
         <put-attribute name="common_styles" value="/resources/pages/common/commonStyles.jsp"/>
         <put-attribute name="common_scripts" value="/resources/pages/common/commonScripts.jsp"/>
-        <put-attribute name="header" value=""/>  <!--value="/resources/pages/chat/header.jsp"-->
-        <put-attribute name="body" value=""/>
-        <put-attribute name="left_part" value=""/>
-        <put-attribute name="right_part" value=""/>
-    </definition>
-
-    <definition name="welcome" extends="mainLayout">
-        <put-attribute name="body" value="/resources/pages/chat/welcome.jsp"/>
-    </definition>
-
-    <definition name="startPage" extends="mainLayout">
+        <put-attribute name="header" value="/resources/pages/header.jsp"/>
         <put-attribute name="body" value=""/>
     </definition>
 
-  </tiles-definitions>
+    <definition name="signIn" extends="mainLayout">
+        <put-attribute name="body" value="/resources/pages/signIn.jsp"/>
+    </definition>
+
+    <definition name="publicChatsList" extends="mainLayout">
+        <put-attribute name="body" value="/resources/pages/chat/list/publicChatsList.jsp"/>
+    </definition>
+
+    <definition name="privateChatsList" extends="mainLayout">
+        <put-attribute name="body" value="/resources/pages/chat/list/privateChatsList.jsp"/>
+    </definition>
+
+</tiles-definitions>
