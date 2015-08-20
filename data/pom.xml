@@ -12,6 +12,18 @@
     <artifactId>data</artifactId>
     <version>0.0</version>
 
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>central</id>-->
+            <!--<name>Central Repository</name>-->
+            <!--<url>http://repo.maven.apache.org/maven2</url>-->
+            <!--<layout>default</layout>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
     <properties>
         <spring.mongodb.version>1.6.2.RELEASE</spring.mongodb.version>
         <mongodb.driver.version>2.13.0</mongodb.driver.version>

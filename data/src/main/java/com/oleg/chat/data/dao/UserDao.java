@@ -1,6 +1,6 @@
 package com.oleg.chat.data.dao;
 
-import com.oleg.chat.data.domain.User;
+import com.oleg.chat.data.entities.impl.User;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;

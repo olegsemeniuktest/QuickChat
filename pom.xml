@@ -11,6 +11,18 @@
     </modules>
     <name>Quick Chat</name>
 
+    <!--<repositories>-->
+    <!--<repository>-->
+    <!--<id>central</id>-->
+    <!--<name>Central Repository</name>-->
+    <!--<url>http://repo.maven.apache.org/maven2</url>-->
+    <!--<layout>default</layout>-->
+    <!--<snapshots>-->
+    <!--<enabled>false</enabled>-->
+    <!--</snapshots>-->
+    <!--</repository>-->
+    <!--</repositories>-->
+
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
         <spring.security.version>4.0.1.RELEASE</spring.security.version>

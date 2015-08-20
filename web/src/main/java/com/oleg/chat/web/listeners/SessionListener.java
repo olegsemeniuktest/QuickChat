@@ -1,6 +1,6 @@
 package com.oleg.chat.web.listeners;
 
-import com.oleg.chat.data.domain.IUser;
+import com.oleg.chat.data.entities.IUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

@@ -1,6 +1,6 @@
 package com.oleg.chat.data.services;
 
-import com.oleg.chat.data.domain.Message;
+import com.oleg.chat.data.entities.impl.Message;
 
 import java.util.Date;
 import java.util.List;

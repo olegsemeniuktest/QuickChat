@@ -70,41 +70,8 @@ public class DataModuleSpringConfig {
 
     @Bean
     public ApplicationListener mongoDBInitializer() {
-        MongoDBInitializer mongoDBInitializer = new MongoDBInitializer("com.oleg.chat.data.domain");
+        MongoDBInitializer mongoDBInitializer = new MongoDBInitializer("com.oleg.chat.data.entities");
         return mongoDBInitializer;
     }
 
-    private class CustomMongoTemplate extends MongoTemplate {
-
-        public CustomMongoTemplate(Mongo mongo, String databaseName) {
-            super(mongo, databaseName);
-        }
-
-        public CustomMongoTemplate(Mongo mongo, String databaseName, UserCredentials userCredentials) {
-            super(mongo, databaseName, userCredentials);
-        }
-
-        public CustomMongoTemplate(MongoDbFactory mongoDbFactory) {
-            super(mongoDbFactory);
-        }
-
-        public CustomMongoTemplate(MongoDbFactory mongoDbFactory, MongoConverter mongoConverter) {
-            super(mongoDbFactory, mongoConverter);
-        }
-
-        @Override
-        public void insert(Object objectToSave, String collectionName) {
-            super.insert(objectToSave, collectionName);
-        }
-
-        @Override
-        public void insert(Collection<? extends Object> batchToSave, String collectionName) {
-            super.insert(batchToSave, collectionName);
-        }
-
-        @Override
-        public void save(Object objectToSave, String collectionName) {
-            super.save(objectToSave, collectionName);
-        }
-    }
 }

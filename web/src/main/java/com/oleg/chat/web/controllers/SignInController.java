@@ -18,6 +18,7 @@ public class SignInController {
         if (principal != null) {
             return "redirect:/chats/public";
         } else {
+            model.put("login_error", true);
             return "signIn";
         }
     }

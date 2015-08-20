@@ -1,7 +1,7 @@
 package com.oleg.chat.data.dao;
 
 import com.mongodb.WriteResult;
-import com.oleg.chat.data.domain.AEntity;
+import com.oleg.chat.data.entities.AEntity;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public abstract class BaseDao<Entity extends AEntity> {
 
-    private Class<Entity> entityClass;
+    private final Class<Entity> entityClass;
 
     @Resource
     protected MongoOperations mongoOperations;

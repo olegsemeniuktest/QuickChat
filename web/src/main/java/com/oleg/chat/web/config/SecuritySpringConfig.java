@@ -1,7 +1,7 @@
 package com.oleg.chat.web.config;
 
-import com.oleg.chat.data.services.impl.UserService;
 import com.oleg.chat.web.security.SingleNicknameAuthenticationProvider;
+import com.oleg.chat.web.security.filters.NicknameFormLoginConfigurer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
-    private UserService userDetailsService;
+    private NicknameFormLoginConfigurer nicknameFormLoginConfigurer;
     @Resource
     private SingleNicknameAuthenticationProvider authenticationProvider;
 
@@ -33,29 +33,34 @@ public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-                   http.csrf()
+        http.csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/styles/**").permitAll()
                 .antMatchers("/images/**").permitAll()
-                .antMatchers("/scripts/**").                     permitAll()
+                .antMatchers("/scripts/**").permitAll()
 
                 .anyRequest().permitAll()
                 .and();
 
-        http.formLogin()
+        http.apply(nicknameFormLoginConfigurer)
                 .loginPage("/signIn")
-                .failureUrl("/signIn")
-                .usernameParameter("nickname")
-                .passwordParameter("password")
+                .failureUrl("/signIn?error=true")
+                .nicknameParameter("nickname")
                 .defaultSuccessUrl("/chats/public");
 
+
+//        http.                //  http.apply() //addFilterBefore(nicknameAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).
+//                formLogin()
+//                .loginPage("/signIn")
+//                .failureUrl("/signIn")
+//                .usernameParameter("nickname")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/chats/public");
+
         http.logout()
-                // ��������� ������ ������ ����
                 .permitAll()
-                        // ��������� URL �������
                 .logoutUrl("/logout")
-                        // ��������� URL ��� ������� �������
                 .logoutSuccessUrl("/signIn");
 
     }

@@ -1,6 +1,6 @@
 package com.oleg.chat.data.dao;
 
-import com.oleg.chat.data.domain.Sequence;
+import com.oleg.chat.data.entities.impl.Sequence;
 import com.oleg.chat.data.utils.exceptions.RuntimeDBException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;

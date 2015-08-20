@@ -13,6 +13,18 @@
     <version>0.0</version>
     <packaging>war</packaging>
 
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>central</id>-->
+            <!--<name>Central Repository</name>-->
+            <!--<url>http://repo.maven.apache.org/maven2</url>-->
+            <!--<layout>default</layout>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
     <properties>
         <jetty.version>9.0.7.v20131107</jetty.version>
         <jackson.version>2.3.0</jackson.version>

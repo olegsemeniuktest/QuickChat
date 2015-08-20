@@ -5,6 +5,7 @@ import com.oleg.chat.web.config.SecuritySpringConfig;
 import com.oleg.chat.web.config.WebMvcSpringConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
@@ -36,9 +37,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(DataModuleSpringConfig.class, SecuritySpringConfig.class, WebMvcSpringConfig.class);
-
+        WebApplicationContext rootContext = createApplicationContext();
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(rootContext));
@@ -48,17 +47,23 @@ public class WebAppInitializer implements WebApplicationInitializer {
         initFilters(servletContext);
     }
 
+    private WebApplicationContext createApplicationContext() {
+        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+        rootContext.register(DataModuleSpringConfig.class, SecuritySpringConfig.class, WebMvcSpringConfig.class);
+        return rootContext;
+    }
+
     private void initFilters(ServletContext servletContext) {
         EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
 
-//        Encoding
+//        Encoding filter to support cyrillic symbols
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");
         encodingFilter.setForceEncoding(true);
         FilterRegistration.Dynamic encodingFilterDynamic = servletContext.addFilter("encoding-filter", encodingFilter);
         encodingFilterDynamic.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
 
-//        Security
+//        Security filter
         dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR);
         DelegatingFilterProxy springSecurityFilter = new DelegatingFilterProxy();
         FilterRegistration.Dynamic springSecurityFilterDynamic = servletContext.addFilter("springSecurityFilterChain", springSecurityFilter);

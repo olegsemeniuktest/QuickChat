@@ -16,8 +16,16 @@
         <div class="bordered">
             <form action='<c:url value="signIn"/>' method="post" class="form_signin text-left" role="form">
                 <h2 style="color: #ffffff">Please sign in</h2>
+
+                <c:if test="${param.error == true}">
+                    <div class="alert alert-danger alert-dismissable" style="padding: 4px; margin-bottom: 4px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                    </div>
+                </c:if>
+
                 <input type="text" class="form-control" placeholder="Nickname" name="nickname" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <%--<input type="password" class="form-control" placeholder="Password" name="password" required>--%>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>

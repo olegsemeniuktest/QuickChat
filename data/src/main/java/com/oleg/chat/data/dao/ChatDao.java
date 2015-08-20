@@ -1,6 +1,6 @@
 package com.oleg.chat.data.dao;
 
-import com.oleg.chat.data.domain.Chat;
+import com.oleg.chat.data.entities.impl.Chat;
 import org.springframework.stereotype.Repository;
 
 /**
