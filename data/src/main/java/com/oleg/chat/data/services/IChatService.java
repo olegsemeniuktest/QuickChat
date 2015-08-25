@@ -3,6 +3,7 @@ package com.oleg.chat.data.services;
 import com.oleg.chat.data.entities.impl.Chat;
 import com.oleg.chat.data.entities.impl.User;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -10,15 +11,13 @@ import java.util.List;
  */
 public interface IChatService<C extends Chat> {
 
-    void insert(C entity);
-
-    void saveOrUpdate(C entity);
+    void save(C entity);
 
     void remove(long id);
 
-    public C get(long id);
+    C get(long id);
 
-    public List<C> getAll();
+    Collection<Chat> getAll();
 
     List<User> getActiveUsers(long chatId);
 

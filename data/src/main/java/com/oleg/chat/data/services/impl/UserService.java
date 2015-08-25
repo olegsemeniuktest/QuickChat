@@ -1,6 +1,6 @@
-package com.oleg.chat.data.services.impl.db;
+package com.oleg.chat.data.services.impl;
 
-import com.oleg.chat.data.dao.UserDao;
+import com.oleg.chat.data.dao.IUserDao;
 import com.oleg.chat.data.entities.impl.User;
 import com.oleg.chat.data.services.IUserService;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ import java.util.Optional;
 public class UserService extends AService<User> implements IUserService {
 
     @Resource
-    private UserDao userDao;
+    private IUserDao userDao;
 
     @Override
-    public void saveOrUpdate(User entity) {
-        userDao.saveOrUpdate(entity);
+    public void insertOrUpdate(User entity) {
+        userDao.insertOrUpdate(entity);
     }
 
     @Override
@@ -30,5 +30,9 @@ public class UserService extends AService<User> implements IUserService {
     @Override
     public Optional<User> getByNickName(String nickname) {
         return Optional.ofNullable(userDao.findByNickname(nickname));
+    }
+
+    public boolean existNickname(String nickname) {
+        return userDao.existNickname(nickname);
     }
 }

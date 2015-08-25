@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 public interface IUser {
 
-    long getId();
+    Long getId();
 
     String getNickname();
 

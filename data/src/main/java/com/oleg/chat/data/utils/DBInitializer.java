@@ -1,8 +1,8 @@
 package com.oleg.chat.data.utils;
 
 import com.google.common.reflect.ClassPath;
-import com.oleg.chat.data.dao.ChatDao;
-import com.oleg.chat.data.dao.SequenceDao;
+import com.oleg.chat.data.dao.IChatDao;
+import com.oleg.chat.data.dao.ISequenceDao;
 import com.oleg.chat.data.entities.impl.Sequence;
 import com.oleg.chat.data.services.IChatService;
 import org.slf4j.Logger;
@@ -19,13 +19,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class MongoDBInitializer implements ApplicationListener<ContextRefreshedEvent> {
+public class DBInitializer implements ApplicationListener<ContextRefreshedEvent> {
 
-    private Logger log = LoggerFactory.getLogger(MongoDBInitializer.class);
+    private Logger log = LoggerFactory.getLogger(DBInitializer.class);
 
     private final String scanPackage;
 
-    public MongoDBInitializer(String scanPackage) {
+    public DBInitializer(String scanPackage) {
         this.scanPackage = scanPackage;
     }
 
@@ -33,7 +33,7 @@ public class MongoDBInitializer implements ApplicationListener<ContextRefreshedE
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         ApplicationContext applicationContext = event.getApplicationContext();
-        SequenceDao sequenceDao = applicationContext.getBean(SequenceDao.class);
+        ISequenceDao sequenceDao = applicationContext.getBean(ISequenceDao.class);
         test(applicationContext);
 
         for (Document docAnnotation : findAnnotatedEntities()) {
@@ -53,7 +53,7 @@ public class MongoDBInitializer implements ApplicationListener<ContextRefreshedE
         List<Document> documents = new ArrayList<>();
         ClassPath classPath;
         try {
-            classPath = ClassPath.from(MongoDBInitializer.class.getClassLoader());
+            classPath = ClassPath.from(DBInitializer.class.getClassLoader());
         } catch (IOException e) {
             log.warn("Error during initialize DB: {}", e.getLocalizedMessage());
             return documents;
@@ -71,7 +71,7 @@ public class MongoDBInitializer implements ApplicationListener<ContextRefreshedE
     }
 
     private void test(ApplicationContext applicationContext) {
-        ChatDao chatDao = applicationContext.getBean(ChatDao.class);
+        IChatDao chatDao = applicationContext.getBean(IChatDao.class);
         IChatService chatService = applicationContext.getBean(IChatService.class);
         chatService.getAll();
         int point = 5;

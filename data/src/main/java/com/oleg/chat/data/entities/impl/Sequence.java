@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Sequence of identifiers for new entities
+ * Sequence of identifiers for new instance of some entity
  *
  * Created by oleg on 08.03.2015.
  */

@@ -13,21 +13,12 @@ public class Message extends AEntity {
 
     public static final String COLLECTION_NAME = "messages";
 
-    private long id;
+
     private String text;
     private User sender;
     private Date sentTime;
 
-
     private Chat chat;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getText() {
         return text;

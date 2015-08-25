@@ -53,7 +53,7 @@ public class UserManager {
     public synchronized IUser createNew(String nickname) throws AuthenticationException {
         validateNickname(nickname);
         User user = newUserObject(nickname);
-        userService.insert(user);
+        userService.save(user);
         return user;
     }
 

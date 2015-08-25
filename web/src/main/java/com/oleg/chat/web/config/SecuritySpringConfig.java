@@ -1,5 +1,6 @@
 package com.oleg.chat.web.config;
 
+import com.oleg.chat.data.beans.Authority;
 import com.oleg.chat.web.security.SingleNicknameAuthenticationProvider;
 import com.oleg.chat.web.security.filters.NicknameFormLoginConfigurer;
 import org.springframework.context.annotation.ComponentScan;
@@ -40,7 +41,16 @@ public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/scripts/**").permitAll()
 
-                .anyRequest().permitAll()
+                .antMatchers("/signIn").anonymous()
+
+                .antMatchers("/logout").authenticated()
+
+                .antMatchers(
+                        "/chats/private"
+                ).hasRole(Authority.USER.name())
+
+                .anyRequest()
+                .permitAll()
                 .and();
 
         http.apply(nicknameFormLoginConfigurer)

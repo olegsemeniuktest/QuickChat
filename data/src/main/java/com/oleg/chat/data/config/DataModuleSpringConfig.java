@@ -2,13 +2,10 @@ package com.oleg.chat.data.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.oleg.chat.data.utils.MongoDBInitializer;
+import com.oleg.chat.data.utils.DBInitializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -18,60 +15,19 @@ import org.springframework.data.mongodb.core.convert.*;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 import java.net.UnknownHostException;
-import java.util.Collection;
 
 /**
- * Created by Oleg Semeniuk on 18.02.2015.
+ * Created by Oleg Semeniuk.
  */
 @Configuration
 @ComponentScan("com.oleg.chat.data")
-@PropertySource("classpath:properties/jdbc.properties")
+@Import(MongoDBSpringConfig.class)
 public class DataModuleSpringConfig {
 
-    @Value("${mongodb.server}")
-    private String mongoServer;
-    @Value("${mongodb.port}")
-    private int mongoPort;
-    @Value("${mongodb.dbName}")
-    private String dbName;
-    @Value("${mongodb.username}")
-    private String username;
-    @Value("${mongodb.password}")
-    private String password;
-
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
-    @Bean
-    public Mongo mongo() throws UnknownHostException {
-        return new MongoClient(mongoServer, mongoPort);
-    }
-
-    @Bean
-    public MongoDbFactory mongoDbFactory() throws Exception {
-        UserCredentials userCredentials = new UserCredentials(username, password);
-        return new SimpleMongoDbFactory(mongo(), dbName, userCredentials);
-    }
-
-    @Bean
-    public MongoTemplate mongoTemplate() throws Exception {
-        DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory());
-        MappingMongoConverter converter = new MappingMongoConverter(dbRefResolver, new MongoMappingContext());
-//        converter.setTypeMapper(new DefaultMongoTypeMapper());
-        converter.afterPropertiesSet();
-
-
-        MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory(), converter);
-
-        return mongoTemplate;
-    }
-
-    @Bean
-    public ApplicationListener mongoDBInitializer() {
-        MongoDBInitializer mongoDBInitializer = new MongoDBInitializer("com.oleg.chat.data.entities");
-        return mongoDBInitializer;
+    public ApplicationListener DBInitializer() {
+        DBInitializer DBInitializer = new DBInitializer("com.oleg.chat.data.entities");
+        return DBInitializer;
     }
 
 }

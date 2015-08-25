@@ -9,11 +9,16 @@ import java.util.Optional;
  */
 public interface IUserService {
 
-    void insert(User entity);
-
-    void saveOrUpdate(User entity);
+    /**
+     * Stores an object in the repository or update it, if the
+     * object is already present.
+     * @param entity - object to be stored or updated
+     */
+    void save(User entity);
 
     void remove(long id);
 
     Optional<User> getByNickName(String nickname);
+
+    boolean existNickname(String nickname);
 }
