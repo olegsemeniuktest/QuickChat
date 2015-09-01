@@ -47,7 +47,7 @@ public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(
                         "/chats/private"
-                ).hasRole(Authority.USER.name())
+                ).hasAuthority(Authority.USER.name())
 
                 .anyRequest()
                 .permitAll()

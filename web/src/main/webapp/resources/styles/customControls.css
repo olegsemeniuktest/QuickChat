@@ -1,5 +1,5 @@
 .btn-primary {
-    font-size: 16pt;
+    font-size: 13pt;
     background: #f04e23;
     color: #ffffff;
 }
@@ -11,4 +11,27 @@
 .btn-primary:active, .btn-primary.active {
     background: #c34c27;
     box-shadow: none;
+}
+
+.btn-list {
+    font-size: 12pt;
+    background: #ffffff;
+    color: #686868;
+}
+
+.btn-list:hover, .btn-list:focus, .btn-list:active, .btn-list.active, .open > .dropdown-toggle.btn-list {
+    font-size: 12pt;
+    background: #ffffff;
+    color: #f04e23;
+    /*border: 1px solid #afafaf;*/
+    border-color: #adadad;
+}
+
+.btn-list:active, .btn-list.active {
+    font-size: 12pt;
+    background: #ffffff;
+    color: #f04e23;
+    /*border: 1px solid #ffed48;*/
+    border-color: #ffed48;
+    /*box-shadow: none;*/
 }
