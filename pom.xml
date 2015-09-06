@@ -8,6 +8,7 @@
     <modules>
         <module>data</module>
         <module>web</module>
+        <module>common</module>
     </modules>
     <name>Quick Chat</name>
 

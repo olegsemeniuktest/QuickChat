@@ -14,7 +14,7 @@ import java.util.List;
  * Created by oleg on 14.03.2015.
  */
 @Service
-public class ChatService extends AService<Chat> implements IChatService<Chat> {
+public class ChatService extends AService<Chat> implements IChatService {
 
     @Resource
     private IChatDao chatDao;

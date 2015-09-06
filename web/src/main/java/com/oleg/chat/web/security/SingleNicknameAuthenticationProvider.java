@@ -24,8 +24,6 @@ public class SingleNicknameAuthenticationProvider implements AuthenticationProvi
 
     @Autowired
     private UserManager userManager;
-    @Autowired
-    private IUserService userService;
     private MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 
     @Override

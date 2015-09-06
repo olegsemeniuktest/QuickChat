@@ -33,12 +33,20 @@
 
     <dependencies>
 
+        <!-- Other modules -->
+        <dependency>
+            <groupId>com.oleg.chat</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.oleg.chat</groupId>
             <artifactId>data</artifactId>
             <version>0.0</version>
         </dependency>
 
+        <!-- JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

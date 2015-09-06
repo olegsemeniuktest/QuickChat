@@ -36,22 +36,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
     private static final String PROFILES_PROPERTY_NAME = "active.profiles";
     private static final String PROFILES_CONFIG_FILE = "properties/active_profiles.properties";
 
-//        @Override
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-//        rootContext.register(DataModuleSpringConfig.class, SecuritySpringConfig.class);
-//
-//        servletContext.addListener(new ContextLoaderListener(rootContext));
-//
-//        AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
-//        dispatcherServlet.register(WebMvcSpringConfig.class);
-//
-//        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));
-//        dispatcher.setLoadOnStartup(1);
-//        dispatcher.addMapping("/");
-//    initFilters(servletContext);
-//    }
-
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         WebApplicationContext rootContext = createApplicationContext();

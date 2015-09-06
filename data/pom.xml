@@ -49,5 +49,13 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>${mongodb.driver.version}</version>
         </dependency>
+
+        <!-- Other modules -->
+        <dependency>
+            <groupId>com.oleg.chat</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0</version>
+        </dependency>
+
     </dependencies>
 </project>
