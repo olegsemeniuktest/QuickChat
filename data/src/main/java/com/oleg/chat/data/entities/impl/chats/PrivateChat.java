@@ -1,5 +1,6 @@
-package com.oleg.chat.data.entities.impl;
+package com.oleg.chat.data.entities.impl.chats;
 
+import com.oleg.chat.data.entities.impl.User;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 

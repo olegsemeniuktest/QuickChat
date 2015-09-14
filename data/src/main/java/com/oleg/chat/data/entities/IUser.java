@@ -5,7 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 /**
- * Created by olegsemeniuk on 02.05.2015.
+ * Created by Oleg Semeniuk.
  */
 public interface IUser {
 
@@ -14,4 +14,12 @@ public interface IUser {
     String getNickname();
 
     Collection<? extends GrantedAuthority> getAuthorities();
+
+    /**
+     * Indicates whether the user's account has expired.
+     *
+     * @return <code>true</code> if the user's account is valid (ie non-expired),
+     * <code>false</code> if no longer valid (ie expired)
+     */
+    boolean isNonExpired();
 }

@@ -1,7 +1,7 @@
 package com.oleg.chat.data.services.impl;
 
 import com.oleg.chat.data.dao.IChatDao;
-import com.oleg.chat.data.entities.impl.Chat;
+import com.oleg.chat.data.entities.impl.chats.Chat;
 import com.oleg.chat.data.entities.impl.User;
 import com.oleg.chat.data.services.IChatService;
 import org.springframework.stereotype.Service;

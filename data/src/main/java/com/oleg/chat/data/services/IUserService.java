@@ -12,13 +12,16 @@ public interface IUserService {
     /**
      * Stores an object in the repository or update it, if the
      * object is already present.
+     *
      * @param entity - object to be stored or updated
      */
     void save(User entity);
 
-    void remove(long id);
+    Optional<User> getById(long id);
 
     Optional<User> getByNickName(String nickname);
 
     boolean existNickname(String nickname);
+
+    void remove(long id);
 }

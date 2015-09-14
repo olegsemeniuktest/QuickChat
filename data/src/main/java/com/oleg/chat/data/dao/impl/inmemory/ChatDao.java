@@ -2,7 +2,7 @@ package com.oleg.chat.data.dao.impl.inmemory;
 
 import com.oleg.chat.data.config.DataProfiles;
 import com.oleg.chat.data.dao.IChatDao;
-import com.oleg.chat.data.entities.impl.Chat;
+import com.oleg.chat.data.entities.impl.chats.Chat;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 

@@ -1,23 +1,24 @@
 package com.oleg.chat.data.dao;
 
-import com.mongodb.WriteResult;
-import com.oleg.chat.data.entities.impl.Chat;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
+import com.oleg.chat.data.entities.IChat;
+import com.oleg.chat.data.entities.IUser;
+import com.oleg.chat.data.entities.impl.chats.AChat;
+import com.oleg.chat.data.entities.impl.chats.Chat;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by Oleg Semeniuk.
  */
 public interface IChatDao {
 
-    void insertOrUpdate(Chat entity);
+    void insertOrUpdate(AChat entity);
 
-    Chat get(long id);
+    IChat get(long id);
 
-    Collection<Chat> getAll();
+    Collection<IChat> getAllPublic();
+
+    Collection<IChat> getAllPrivate(IUser user);
 
     boolean remove(long id);
 

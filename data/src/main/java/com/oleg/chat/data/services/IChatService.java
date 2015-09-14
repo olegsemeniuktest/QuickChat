@@ -1,7 +1,7 @@
 package com.oleg.chat.data.services;
 
 import com.oleg.chat.data.entities.IUser;
-import com.oleg.chat.data.entities.impl.Chat;
+import com.oleg.chat.data.entities.impl.chats.Chat;
 import com.oleg.chat.data.entities.impl.User;
 
 import java.util.Collection;

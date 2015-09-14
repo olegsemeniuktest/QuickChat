@@ -5,6 +5,7 @@ import com.oleg.chat.data.entities.AEntity;
 import com.oleg.chat.data.entities.IUser;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -22,6 +23,8 @@ public class User extends AEntity implements IUser {
     private String nickname;
 
     private Set<Authority> authorities = new HashSet<>();
+
+    private boolean nonExpired = true;
 
     @Override
     public String getCollectionName() {
@@ -43,6 +46,15 @@ public class User extends AEntity implements IUser {
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
+    }
+
+    @Override
+    public boolean isNonExpired() {
+        return nonExpired;
+    }
+
+    public void setNonExpired(boolean nonExpired) {
+        this.nonExpired = nonExpired;
     }
 
 }

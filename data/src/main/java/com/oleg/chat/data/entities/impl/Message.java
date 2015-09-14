@@ -1,6 +1,7 @@
 package com.oleg.chat.data.entities.impl;
 
 import com.oleg.chat.data.entities.AEntity;
+import com.oleg.chat.data.entities.impl.chats.Chat;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;

@@ -28,6 +28,11 @@ public class UserService extends AService<User> implements IUserService {
     }
 
     @Override
+    public Optional<User> getById(long id) {
+        return Optional.ofNullable(userDao.get(id));
+    }
+
+    @Override
     public Optional<User> getByNickName(String nickname) {
         return Optional.ofNullable(userDao.findByNickname(nickname));
     }
