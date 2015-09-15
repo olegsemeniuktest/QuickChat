@@ -5,6 +5,7 @@ import com.oleg.chat.data.entities.impl.chats.Chat;
 import com.oleg.chat.data.entities.impl.User;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +21,11 @@ public interface IChatService {
 
     Collection<Chat> getPublicChats();
 
+    Collection<Chat> getPublicChatsPart(Date timeFrom, int partSize);
+
     Collection<Chat> getPrivateChats(IUser user);
+
+    Collection<Chat> getPrivateChats(IUser user, Date timeFrom, int partSize);
 
     List<User> getActiveUsers(long chatId);
 

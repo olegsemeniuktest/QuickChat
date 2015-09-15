@@ -1,5 +1,6 @@
 package com.oleg.chat.data.services;
 
+import com.oleg.chat.data.entities.IUser;
 import com.oleg.chat.data.entities.impl.User;
 
 import java.util.Optional;
@@ -21,7 +22,9 @@ public interface IUserService {
 
     Optional<User> getByNickName(String nickname);
 
-    boolean existNickname(String nickname);
+    boolean isNicknameUsed(String nickname);
+
+    void expireUser(IUser user);
 
     void remove(long id);
 }

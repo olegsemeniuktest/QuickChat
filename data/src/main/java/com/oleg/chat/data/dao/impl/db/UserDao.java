@@ -24,6 +24,6 @@ public class UserDao extends BaseDao<User> implements IUserDao {
     }
 
     public boolean existNickname(String nickname) {
-        return mongoOperations.exists(Query.query(Criteria.where("nickname").is(nickname)), User.class);
+        return mongoOperations.exists(Query.query(Criteria.where("nonExpired").where("nickname").is(nickname)), User.class);
     }
 }

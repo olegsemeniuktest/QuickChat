@@ -1,6 +1,7 @@
 package com.oleg.chat.data.services.impl;
 
 import com.oleg.chat.data.dao.IUserDao;
+import com.oleg.chat.data.entities.IUser;
 import com.oleg.chat.data.entities.impl.User;
 import com.oleg.chat.data.services.IUserService;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,12 @@ public class UserService extends AService<User> implements IUserService {
         return Optional.ofNullable(userDao.findByNickname(nickname));
     }
 
-    public boolean existNickname(String nickname) {
+    public boolean isNicknameUsed(String nickname) {
         return userDao.existNickname(nickname);
+    }
+
+    @Override
+    public void expireUser(IUser user) {
+
     }
 }
