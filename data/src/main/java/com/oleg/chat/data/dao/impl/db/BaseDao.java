@@ -2,12 +2,14 @@ package com.oleg.chat.data.dao.impl.db;
 
 import com.mongodb.WriteResult;
 import com.oleg.chat.data.entities.AEntity;
+import com.oleg.chat.data.entities.impl.chats.AChat;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by oleg on 14.03.2015.
@@ -16,7 +18,7 @@ public abstract class BaseDao<Entity extends AEntity> {
 
     private final Class<Entity> entityClass;
 
-    @Resource
+    @Autowired
     protected MongoOperations mongoOperations;
 
     public BaseDao(Class<Entity> entityClass) {
@@ -27,7 +29,7 @@ public abstract class BaseDao<Entity extends AEntity> {
         mongoOperations.save(entity);
     }
 
-    public Entity get(long id) {
+    public Optional<AChat> get(long id) {
         return mongoOperations.findOne(Query.query(Criteria.where("id").is(id)), entityClass);
     }
 

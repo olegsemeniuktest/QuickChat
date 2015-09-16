@@ -13,8 +13,7 @@ import java.util.*;
  * Created by oleg on 08.03.2015.
  */
 @Document(collection = AChat.COLLECTION_NAME)
-@TypeAlias("chat")
-public class AChat extends AEntity implements IChat {
+public abstract class AChat extends AEntity implements IChat {
     public static final String COLLECTION_NAME = "chats";
 
     private String name;
@@ -22,6 +21,8 @@ public class AChat extends AEntity implements IChat {
     private List<Message> messages = new ArrayList<>();
 
     private Set<IUser> activeUsers = new HashSet<>();
+
+    private Date createTime;
 
     public String getName() {
         return name;
@@ -31,9 +32,12 @@ public class AChat extends AEntity implements IChat {
         this.name = name;
     }
 
-    @Override
-    public boolean isPrivate() {
-        return false;
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
     @Override
@@ -51,6 +55,13 @@ public class AChat extends AEntity implements IChat {
         activeUsers.remove(user);
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     @Override
     public String getCollectionName() {

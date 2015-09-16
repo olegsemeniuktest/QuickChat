@@ -10,9 +10,8 @@ import java.util.List;
 /**
  * Created by oleg on 08.03.2015.
  */
-@Document(collection = Chat.COLLECTION_NAME)
 @TypeAlias("private_chat")
-public class PrivateChat extends Chat {
+public class PrivateChat extends AChat {
 
     private List<User> members = new ArrayList<>();
 
@@ -22,5 +21,10 @@ public class PrivateChat extends Chat {
 
     public void setMembers(List<User> members) {
         this.members = members;
+    }
+
+    @Override
+    public boolean isPrivate() {
+        return true;
     }
 }

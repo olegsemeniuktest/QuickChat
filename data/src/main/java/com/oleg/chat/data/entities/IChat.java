@@ -1,8 +1,10 @@
 package com.oleg.chat.data.entities;
 
+import com.oleg.chat.data.entities.impl.Message;
 import com.oleg.chat.data.entities.impl.User;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,10 +12,13 @@ import java.util.List;
  */
 public interface IChat {
 
-
     String getName();
 
     void setName(String name);
+
+    List<Message> getMessages();
+
+    void setMessages(List<Message> messages);
 
     boolean isPrivate();
 
@@ -22,5 +27,9 @@ public interface IChat {
     void addActiveUser(IUser user);
 
     void removeActiveUser(IUser user);
+
+    Date getCreateTime();
+
+    void setCreateTime(Date createTime);
 
 }
